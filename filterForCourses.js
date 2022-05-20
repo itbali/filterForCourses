@@ -16,7 +16,7 @@ let requiredRange2 = [100, 350];
 let requiredRange3 = [200, null];
 
 //Функция фильтрации курсов
-//	{name: "Courses in Germany", prices: [500, null]} - это если курсы в Германии от 500.
+//	{name: "Courses in Germany", prices: [500, null]} - это как я понял курсы в Германии от 500 и выше.
 const coursesFilter = (arrayOfCourses, range) => {
 	if (range[0] === null) {
 		range[0] = 0
@@ -27,6 +27,7 @@ const coursesFilter = (arrayOfCourses, range) => {
 	let [x, y] = range
 	let result = []
 	arrayOfCourses.forEach(el => {
+
 			if (el.prices[1] === null) {
 				el.prices[1] = Infinity
 			}
@@ -34,7 +35,8 @@ const coursesFilter = (arrayOfCourses, range) => {
 				el.prices[0] = 0
 			}
 			let [a, b] = el.prices
-			if ((x >= a && x <= b) || (y >= a && y <= b)) {
+
+			if ((x >= a && x <= b) || (y >= a && y <= b) || (a>=x&&a<=y) || (b>=x&&b<=y)) {
 				result.push(el)
 			}
 		}
@@ -73,7 +75,8 @@ const coursesFilterSinglePrice = (arrayOfCourses, range) => {
 				}
 			}
 			let [a, b] = el.prices
-			if ((x >= a && x <= b) || (y >= a && y <= b)) {
+
+			if ((x >= a && x <= b) || (y >= a && y <= b) || (a>=x&&a<=y) || (b>=x&&b<=y)) {
 				result.push(el)
 			}
 		}
